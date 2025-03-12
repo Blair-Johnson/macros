@@ -1,0 +1,13 @@
+G21 (mm)
+G91 (relative mode)
+(DEBUG, Z value to restore at block top is #5386)
+(MSG, Verify probe connection to run Z restore after bit change)
+G38.2 Z25 F1 (Go up super-slowly until probe triggered)
+M0 (MSG, Probe Confirmed, will probe new bit)
+
+G38.2 Z-20 F75
+G1 Z1 (Back up 1 to try again slower)
+G38.2 Z-2 F25
+G92 Z[#5386] (Set current position Z value)
+G91 G0 Z25.4
+(MSG, Probe complete, 1" above block)

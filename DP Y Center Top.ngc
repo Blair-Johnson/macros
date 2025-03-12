@@ -1,0 +1,13 @@
+G21 (mm)
+G91 (relative mode)
+(MSG, Verify probe connection to run Y centerline. Start from TOP.)
+G38.2 Y25 F1 (Go up super-slowly until probe triggered)
+M0 (MSG, Probe Confirmed, will probe DOWN in Y for TOP edge.)
+
+G38.2 Y-20 F75
+G1 Y1 (Back up 1 to try again slower)
+G38.2 Y-2 F25
+#<_ytop> = #<_y> (get Y of top edge)
+G0 Y10 (backup)
+(DEBUG, Y top at #<_ytop>)
+(MSG, Top edge probed. Please probe bottom to zero at centerline.)

@@ -1,0 +1,16 @@
+(surfacing routine, starts at lower left corner)
+(set #<x_distance>, #<y_distance>, #<bit_diameter>, #<depth>, #<feedrate>)
+#<x_distance> = 3
+#<y_distance> = 3
+#<bit_diameter> = .25
+#<depth> = 0.02
+#<feedrate> = 80
+#<y_stepovers> = [FUP[#<y_distance>/#<bit_diameter>]]
+#<y_stepover> = [#<y_distance>/#<y_stepovers>]
+o100 repeat [#<y_stepovers>]
+G91 G1 Z-#<depth> F[#<feedrate>/4]
+G91 G1 X#<x_distance> F#<feedrate>
+G91 G0 Z[#<depth>+1]
+G91 G0 X-#<x_distance> Y#<y_stepover>
+G91 G0 Z-1
+o100 endrepeat

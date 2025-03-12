@@ -1,0 +1,13 @@
+G21 (mm)
+G92 X0 (Zero X out)
+(MSG, Probing for X edge FROM the LEFT, assuming 1/4" bit. Touch the probe from the side to test contact.)
+G38.2 X-1 F1 (Go back super-slowly until probe triggered)
+M0 (MSG, Probe Confirmed)
+G0 X0 (return to start)
+
+G38.2 X+20 F75 (fast probe for X)
+G91 G1 X-1 (back up 1mm)
+G38.2 X+2 F25 (slow probe for X)
+G92 X [-63.3-3.175] (zero X at probe block width plus 1/8" to the RIGHT of tool probe position)
+G91 G0 X-10 (relative move to 1cm back from probe block)
+M0 (MSG, X axis zeroed, remember to remove the probe block.)

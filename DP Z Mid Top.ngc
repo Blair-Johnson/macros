@@ -1,0 +1,14 @@
+G21 (mm)
+G91 (relative mode)
+(MSG, Verify probe connection to run Z midpoint. This is the second operation and probes the TOP face.)
+G38.2 Z25 F1 (Go up super-slowly until probe triggered)
+M0 (MSG, Probe Confirmed, will probe DOWN in Z for TOP face.)
+
+G38.2 Z-20 F75
+G1 Z1 (Back up 1 to try again slower)
+G38.2 Z-2 F25
+#<_ztop> = #<_z> (get Z of top face)
+#<_zmid> = [[#<_ztop>+#<_zbottom>]/2]
+G0 Z+10 (backup)
+(DEBUG, Z midpoint at #<_zmid>)
+(MSG, Top face probed. #<_zmid>)

@@ -1,0 +1,13 @@
+G21 (mm)
+G91 (relative mode)
+(MSG, Verify probe connection to run Z diff for bit change)
+G38.2 Z25 F1 (Go up super-slowly until probe triggered)
+M0 (MSG, Probe Confirmed, will probe old bit)
+
+G38.2 Z-20 F75
+G1 Z1 (Back up 1 to try again slower)
+G38.2 Z-2 F25
+#5386 = #<_z> (get z of block top in old coords)
+G0 Z50.8 (make room to change bit)
+(DEBUG, Block top at #5386mm)
+(MSG, Old bit probed, replace with new & run restore when ready to probe)
